@@ -1,52 +1,56 @@
-"use client"
+"use client";
 import React, { useState } from "react";
-import { HoveredLink, Menu, MenuItem, ProductItem } from "@/components/ui/navbar-menu";
+import {
+  HoveredLink,
+  Menu,
+  MenuItem,
+  ProductItem,
+} from "@/components/ui/navbar-menu";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 export default function Navbar({ className }: { className?: string }) {
-    const [active, setActive] = useState<string | null>(null);
-  return (  
-      <div className={cn("fixed top-10 inset-x-0 max-w-2xl mx-auto z-50", className)}>
-        <Menu setActive={setActive}>
+  const [active, setActive] = useState<string | null>(null);
+  return (
+    <div
+      className={cn("fixed top-5 inset-x-0 max-w-2xl mx-auto z-50", className)}
+    >
+      <Menu setActive={setActive}>
+        <Link href="/features">
           <MenuItem setActive={setActive} active={active} item="Features">
             <div className="flex flex-col space-y-4 text-sm">
-              <HoveredLink href="/web-dev">Skin Disease detection</HoveredLink>
-              <HoveredLink href="/interface-design">Interface Design</HoveredLink>
-              <HoveredLink href="/seo">Search Engine Optimization</HoveredLink>
-              <HoveredLink href="/branding">Branding</HoveredLink>
+              <HoveredLink href="/">Skin Disease detection</HoveredLink>
+              <HoveredLink href="/">Interface Design</HoveredLink>
+              <HoveredLink href="/">Search Engine Optimization</HoveredLink>
+              <HoveredLink href="/">Branding</HoveredLink>
             </div>
           </MenuItem>
-          <MenuItem setActive={setActive} active={active} item="About">
-            <div className="  text-sm grid grid-cols-2 gap-10 p-4">
-              <ProductItem
-                title="Team"
-                href="https://algochurn.com"
-                src=""
-                description="Prepare for tech interviews like never before."
-              />
-              <ProductItem
-                title="Project Details"
-                href="https://tailwindmasterkit.com"
-                src=""
-                description="Production ready Tailwind css components for your next project"
-              />
-              <ProductItem
-                title=""
-                href="https://gomoonbeam.com"
-                src=""
-                description="Never write from scratch again. Go from idea to blog in minutes."
-              />
-            </div>
-          </MenuItem>
-          <MenuItem setActive={setActive} active={active} item="Upload">
+        </Link>
+
+        <MenuItem setActive={setActive} active={active} item="About">
+          <div className="  text-sm grid grid-cols-2 gap-10 p-4">
+            <ProductItem
+              title="Team"
+              href="/team"
+              src="/team.jpg"
+              description="Prepare for tech interviews like never before."
+            />
+            <ProductItem
+              title="Project Details"
+              href="/details"
+              src="/project.jpg"
+              description="Production ready Tailwind css components for your next project"
+            />
+          </div>
+        </MenuItem>
+        <MenuItem setActive={setActive} active={active} item="Upload">
+          <Link href="#upload">
             <div className="flex flex-col space-y-4 text-sm">
-              <HoveredLink href="/hobby">Hobby</HoveredLink>
-              <HoveredLink href="/individual">Individual</HoveredLink>
-              <HoveredLink href="/team">Team</HoveredLink>
-              <HoveredLink href="/enterprise">Enterprise</HoveredLink>
+              <HoveredLink href="#upload">Upload a File</HoveredLink>
             </div>
-          </MenuItem>
-        </Menu>
-      </div>
-  )
+          </Link>
+        </MenuItem>
+      </Menu>
+    </div>
+  );
 }
