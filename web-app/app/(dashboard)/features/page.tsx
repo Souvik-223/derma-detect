@@ -1,7 +1,5 @@
-import React from 'react'
+import React from "react";
 
-export default function featurepage() {
-  return (
-    <div>featurepage</div>
-  )
+export default function Features() {
+  return <div>Features</div>;
 }
