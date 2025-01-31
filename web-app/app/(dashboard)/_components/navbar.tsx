@@ -37,7 +37,7 @@ export default function Navbar({ className }: { className?: string }) {
             />
             <ProductItem
               title="Project Details"
-              href="/details"
+              href="/features"
               src="/project.jpg"
               description="Production ready Tailwind css components for your next project"
             />
