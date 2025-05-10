@@ -1,7 +1,6 @@
 import type { Config } from "tailwindcss";
-const defaultTheme = require("tailwindcss/defaultTheme");
-const svgToDataUri = require("mini-svg-data-uri");
 
+const svgToDataUri = require("mini-svg-data-uri");
 const colors = require("tailwindcss/colors");
 const {
   default: flattenColorPalette,
@@ -16,6 +15,22 @@ export default {
   ],
   theme: {
     extend: {
+      animation: {
+        flicker: "flicker 1.5s infinite alternate",
+      },
+      keyframes: {
+        flicker: {
+          "0%, 18%, 22%, 25%, 53%, 57%, 100%": {
+            opacity: "1",
+            textShadow:
+              "0 0 4px #fff, 0 0 11px #fff, 0 0 19px #fff, 0 0 40px #e60073, 0 0 80px #e60073, 0 0 90px #e60073, 0 0 100px #e60073, 0 0 150px #e60073",
+          },
+          "20%, 24%, 55%": {
+            opacity: "0.5",
+            textShadow: "none",
+          },
+        },
+      },
       colors: {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
@@ -89,7 +104,6 @@ export default {
         { values: flattenColorPalette(theme("backgroundColor")), type: "color" }
       );
     },
-    ,
     require("tailwindcss-animate"),
   ],
 } satisfies Config;
